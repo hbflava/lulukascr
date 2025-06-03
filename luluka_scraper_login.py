@@ -214,6 +214,15 @@ def extract_product_details(product_list):
         ref_match = re.search(r'idproducte=([^&]+)', product['Link'])
         ref = ref_match.group(1) if ref_match else "Sin referencia"
         
+        # NUEVO: Extraer el nombre real del producto desde el título de la página
+        product_title_elem = soup.select_one('h1.title')
+        if product_title_elem and product_title_elem.text.strip():
+            # Actualizar el nombre del producto con el título real
+            product_name = product_title_elem.text.strip()
+        else:
+            # Mantener el nombre original si no se encuentra el título
+            product_name = product['Product']
+        
         # Intentar encontrar el tipo de producto
         product_type = ""
         type_selectors = ['.product-type', '.type', '.category']
@@ -285,11 +294,11 @@ def extract_product_details(product_list):
                     product_details.append({
                         'Category': product['Category'],
                         'Ref': ref,
-                        'Product': product['Product'],
-                        'Type': product_type,
-                        'Product Variant': variant_name,
-                        'Variant': "Variantes",
-                        'Price': variant_price,
+                        'Product': product_name,  # Usar el nombre actualizado
+                        'Type': "",
+                        'Product Variant': product_name,  # Usar el nombre actualizado aquí también
+                        'Variant': "",
+                        'Price': price,
                         'Availability': availability,
                         'Description': description,
                         'Link': product['Link']
@@ -301,9 +310,9 @@ def extract_product_details(product_list):
             product_details.append({
                 'Category': product['Category'],
                 'Ref': ref,
-                'Product': product['Product'],
+                'Product': product_name,  # Usar el nombre actualizado
                 'Type': "",
-                'Product Variant': product['Product'],
+                'Product Variant': product_name,  # Usar el nombre actualizado aquí también
                 'Variant': "",
                 'Price': price,
                 'Availability': availability,
