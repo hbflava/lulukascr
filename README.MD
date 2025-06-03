@@ -37,7 +37,7 @@ openpyxl>=3.0.7
 ## Instalación
 1. Clona este repositorio:
 
-git clone https://github.com/arielgiamportone/luluka-scraper-educativo.git
+git clone https://github.com/hbflava/lulukascr
 cd luluka-scraper-educativo
 
 2. Instala las dependencias:
