@@ -91,4 +91,3 @@ Al utilizar herramientas de web scraping, es importante:
 ## Licencia
 Este proyecto se distribuye bajo la licencia MIT. Ver el archivo LICENSE para más detalles.
 
-Nota: Este proyecto fue desarrollado con propósitos educativos por Ariel Luján Giamportone. Para cualquier consulta o sugerencia, por favor contacta a través de giamportone1@gmail.com.
